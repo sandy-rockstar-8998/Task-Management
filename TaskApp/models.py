@@ -23,7 +23,7 @@ class Admin(models.Model):
 class Employee(models.Model):
     name = models.CharField(max_length=100)
     department = models.CharField(max_length=100)
-    employee_id = models.IntegerField(max_length=100, unique=True, null=True)
+    employee_id = models.IntegerField(unique=True, null=True)
     address = models.CharField(max_length=100)
     contact_number = models.CharField(max_length=15)
     destination = models.CharField(max_length=100, blank=True, null=True)

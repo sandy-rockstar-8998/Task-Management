@@ -39,7 +39,7 @@
 
           <ul class="sub-menu">
             <li><a href="#" class="link-name">Department</a></li>
-            <li><a href={% url "REGIDMENT" %}>Add</a></li>
+            <li><a href="{% url 'REGIDMENT' %}">Add</a></li>
           </ul>
         </li>
 
@@ -54,7 +54,7 @@
 
           <ul class="sub-menu">
             <li><a href="#" class="link-name">Employee</a></li>
-            <li><a href={% url "REGIEMP" %}>Add</a></li>
+            <li><a href="{% url 'REGIEMP' %}">Add</a></li>
           </ul>
         </li>
 
@@ -72,10 +72,10 @@
             <a href="#">
               <span class="link-name">Task</span>
             </a>
-            <li><a href="{% url "task_des" %}" >Task description </a></li>
-            <li><a href={% url "Task" %} >Assign Task</a></li>
-            <li><a href={% url "assigned_tasks" %} >Assigned Task List</a></li>
-            <li><a href={% url "task_end_dates" %} >Task end date</a></li>
+            <li><a href="{% url 'task_des' %}" >Task description </a></li>
+            <li><a href="{% url 'Task' %}" >Assign Task</a></li>
+            <li><a href="{% url 'assigned_tasks' %}" >Assigned Task List</a></li>
+            <li><a href="{% url 'task_end_dates' %}" >Task end date</a></li>
           </ul>
         </li>
 
@@ -90,8 +90,8 @@
 
           <ul class="sub-menu">
             <li><a href="#" class="link-name">Management</a></li>
-            <li><a href={% url "employee_list" %}>Employee Management</a></li>
-            <li><a href={% url "Dlist" %}>Department Management</a></li>
+            <li><a href="{% url 'employee_list' %}">Employee Management</a></li>
+            <li><a href="{% url 'Dlist' %}">Department Management</a></li>
           </ul>
         </li>
 
@@ -166,31 +166,34 @@
             </div>
         </div>
     </section>
+  <script>
+
+    let btn = document.querySelector(".fa-bars");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.addEventListener("click", () => {
+      sidebar.classList.toggle("close");
+    });
+
+    let arrows = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrows.length; i++) {
+      arrows[i].addEventListener("click", (e) => {
+        let arrowParent = e.target.parentElement.parentElement;
+
+        arrowParent.classList.toggle("show");
+      });
+    }
+        const hamburger = document.getElementById('menu');
+        const navigation = document.getElementById('navigation');
+        if (hamburger && navigation) {
+    hamburger.addEventListener('click', function () {
+        navigation.classList.toggle('active');
+        console.log('clicked');
+        });
+        }
+</script>
 
 </body>
-<script>
 
-let btn = document.querySelector(".fa-bars");
-let sidebar = document.querySelector(".sidebar");
-
-btn.addEventListener("click", () => {
-  sidebar.classList.toggle("close");
-});
-
-let arrows = document.querySelectorAll(".arrow");
-for (var i = 0; i < arrows.length; i++) {
-  arrows[i].addEventListener("click", (e) => {
-    let arrowParent = e.target.parentElement.parentElement;
-
-    arrowParent.classList.toggle("show");
-  });
-}
-    const hamburger = document.getElementById('menu');
-    const navigation = document.getElementById('navigation');
-    hamburger.addEventListener('click', function () {
-        navigation.classList.toggle('active')
-        console.log('clicked');
-    })
-</script>
 
 </html>

@@ -23,7 +23,7 @@
 
     <ul class="nav-list">
         <li>
-        <a href="TaskDashboard">
+        <a href="{% url 'TaskDashboard' %}">
             <i class="fab fa-microsoft"></i>
             <span class="link-name">Dashboard</span>
         </a>
@@ -42,12 +42,12 @@
         </div>
         <ul class="sub-menu">
             <li><a href="#" class="link-name">Dept name</a></li>
-            <li><a href="{% url "EmployeeTask" %}" >Task description</a></li>
-            <li><a href="{% url "EMPTaskEndDate" %}">Task end date</a></li>
+            <li><a href="{% url 'EmployeeTask' %}" >Task description</a></li>
+            <li><a href="{% url 'EMPTaskEndDate' %}">Task end date</a></li>
         </ul>
         </li>
          <li>
-        <a href="{% url "EMPAccount" %}">
+        <a href="#">
             <i class="fa fa-gear"></i>
             <span class="link-name">Raise Query</span>
         </a>

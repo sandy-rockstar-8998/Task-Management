@@ -164,6 +164,35 @@ def ABOUT(request):
 
 
 def EMPDASHBOARD(request):
+    email = request.session.get("EmployeeEmail")
+
+    if not email:
+        return render(request, "error.html", {
+            'error_message': "Session expired. Please log in again."
+        })
+
+    try:
+        tasks = Task.objects.filter(email=email)
+
+        total_tasks = tasks.count()
+        in_progress_tasks = tasks.filter(priority='High').count()
+        completed_tasks = FinishedTask.objects.filter(
+            email=email,
+            finished=True
+        ).count()
+
+        return render(request, "EMPDashboard.html", {
+            'total_tasks': total_tasks,
+            'in_progress_tasks': in_progress_tasks,
+            'completed_tasks': completed_tasks,
+        })
+
+    except Exception as e:
+        print("Dashboard error:", e) 
+        return render(request, "error.html", {
+            'error_message': "Something went wrong. Please try again."
+        })
+# def EMPDASHBOARD(request):
     try:
         email = request.session.get("EmployeeEmail")
 
