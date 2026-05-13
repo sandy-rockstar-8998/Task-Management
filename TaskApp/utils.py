@@ -1,24 +1,19 @@
-# utils.py
 from .models import Task, FinishedTask, Employee
 from django.db.models import Count
 from django.core.mail import send_mail
 from django.conf import settings
 
 
-# Import plotting functions from utils.py
 
 
-# Rest of your views.py code...
 
 
 def send_email_to_employee(email, new_email):
     """
     Sends a customized welcome email to the client upon signup.
     """
-    # Extract email settings from Django settings
     from_email = settings.EMAIL_HOST_USER
 
-    # Construct email subject and message
     subject = "Welcome to ETMD Pvt Ltd."
     message = f"""
     Dear {email},
