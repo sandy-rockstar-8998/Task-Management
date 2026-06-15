@@ -1,5 +1,3 @@
-# TaskProject
-
 This is a Django project for employee and task management. It uses Django templates and a backend database.
 
 ## Fixes applied
