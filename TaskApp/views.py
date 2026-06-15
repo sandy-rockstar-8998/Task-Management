@@ -353,9 +353,9 @@ def assign_task(request):
         form = TaskForm(request.POST)
         print(form)
         if form.is_valid():
-            form.save()  # Save the form data to the database
+            form.save() 
             send_task_assignment_email(title, description, email)
-            return redirect('AdminDashboard')  # Redirect to a success page
+            return redirect('AdminDashboard') 
     else:
         form = TaskForm()
     return render(request, 'assigntask.html', {'form': form})

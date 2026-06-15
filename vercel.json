@@ -1,0 +1,26 @@
+{
+  "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput",
+  "outputDirectory": "staticfiles",
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "TaskProject.settings",
+    "DEBUG": "False"
+  },
+  "functions": {
+    "TaskProject/wsgi.py": {
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=3600, immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "TaskProject/wsgi.py"
+    }
+  ]
+}
