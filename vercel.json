@@ -6,7 +6,7 @@
     "DEBUG": "False"
   },
   "functions": {
-    "api/wsgi.py": {
+    "TaskProject/wsgi.py": {
       "maxDuration": 30
     }
   },
@@ -20,7 +20,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "api/wsgi.py"
+      "dest": "TaskProject/wsgi.py"
     }
   ]
 }
