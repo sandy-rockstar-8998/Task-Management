@@ -12,22 +12,33 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Try to import decouple, fall back to os.environ
+try:
+    from decouple import config
+except ImportError:
+    def config(key, default=None, cast=bool):
+        """Fallback config function using os.environ"""
+        value = os.environ.get(key, default)
+        if cast and value and value != default:
+            if cast == bool:
+                return value.lower() in ('true', '1', 'yes')
+            return cast(value)
+        return value
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-2%@s^2c6=2+3a%u#umbvgp&ja+uaw)qyw-a!3#jgs@+i@(z006')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2%@s^2c6=2+3a%u#umbvgp&ja+uaw)qyw-a!3#jgs@+i@(z006')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*,localhost,127.0.0.1').split(',')
 
 
 # Application definition
